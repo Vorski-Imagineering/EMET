@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMET</title>
+<meta name="description" content="A consultancy practising empathic agent design.">
+<style>
+  :root {
+    --bg: #faf9f7;
+    --fg: #1a1918;
+    --muted: #6b6762;
+    --rule: #ddd8d1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12110f;
+      --fg: #f2efe9;
+      --muted: #9a938a;
+      --rule: #2e2b27;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    padding: 0 16px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: ui-serif, Georgia, "Times New Roman", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.75rem;
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(2.75rem, 12vw, 5rem);
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-indent: 0.22em;
+    line-height: 1;
+  }
+  .heb {
+    display: block;
+    margin-bottom: 0.9rem;
+    font-size: clamp(1.5rem, 6vw, 2.25rem);
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-indent: 0.1em;
+  }
+  p {
+    margin: 0;
+    max-width: 28ch;
+    font-size: clamp(1rem, 3.5vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  hr {
+    width: 3rem;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+  }
+</style>
+</head>
+<body>
+  <h1><span class="heb" lang="he" dir="rtl">אמת</span>EMET</h1>
+  <hr>
+  <p>A consultancy practising empathic agent design.</p>
+</body>
+</html>
