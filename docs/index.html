@@ -58,11 +58,25 @@
     line-height: 1.6;
     color: var(--muted);
   }
+  a {
+    color: var(--fg);
+    text-decoration: underline;
+  }
+  a:visited {
+    color: var(--muted);
+  }
   hr {
     width: 3rem;
     margin: 0;
     border: 0;
     border-top: 1px solid var(--rule);
+  }
+  .nav {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    margin-top: 1rem;
+  }
+  .nav a {
+    margin: 0 1rem;
   }
 </style>
 </head>
@@ -72,5 +86,8 @@
   <p>A consultancy practising empathic agent design.</p>
   <hr>
   <p><strong>Workshop</strong><br>October 2, 2026</p>
+  <div class="nav">
+    <a href="/journal/">Journal</a>
+  </div>
 </body>
 </html>
