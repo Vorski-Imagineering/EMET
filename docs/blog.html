@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=greybar">
+<link rel="stylesheet" href="site.css?v=pages2">
 </head>
 <body>
 <header class="site-header">
@@ -29,11 +29,93 @@
     </nav>
   </div>
 </header>
-<main class="page">
-  <p class="eyebrow">EMET</p>
-  <h1>Blog</h1>
-  <p class="soon">Coming soon.</p>
+<main>
+<section class="intro">
+  <div class="intro-inner">
+    <p class="mv-label">Blog</p>
+    <h1>Notes from the Lab</h1>
+    <p class="lead">Essays, working notes and research from our living lab on human&ndash;AI collaboration. Videos from our YouTube channel will appear here too.</p>
+  </div>
+</section>
+<!-- PLACEHOLDER posts (invented for layout, 2026-09-28). Replace before promotion. Photos: Pexels. -->
+<section class="light-band">
+  <div class="lab-inner">
+    <div class="filters" aria-hidden="true"><span class="on">All</span><span>Essays</span><span>Lab Notes</span><span>Research</span><span>Videos</span></div>
+    <a class="card featured" href="post-golem.html">
+        <img src="blog-golem.jpg" alt="Hands shaping wet clay on a potter's wheel" loading="lazy" width="900" height="600">
+        <div class="card-body">
+          <span class="card-meta">Essay &middot; 6 min read</span>
+          <h3>What the Golem Teaches Us About AI Agents</h3>
+          <p>An old legend about a helper that obeyed too well, and what it means for the agents we are building today.</p>
+          <span class="more">Read more &rarr;</span>
+        </div>
+      </a>
+    <div class="cards">
+      <a class="card" href="post-testing-on-ourselves.html">
+        <img src="blog-lab-notes.jpg" alt="Two people comparing handwritten notes at a wooden desk" loading="lazy" width="900" height="600">
+        <div class="card-body">
+          <span class="card-meta">Lab Notes &middot; 4 min read</span>
+          <h3>Testing on Ourselves First</h3>
+          <p>Why every practice we recommend begins inside our own team, and what a living lab looks like day to day.</p>
+          <span class="more">Read more &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="post-i-dont-know.html">
+        <img src="blog-uncertainty.jpg" alt="A hand writing in a notebook beside an open laptop" loading="lazy" width="900" height="600">
+        <div class="card-body">
+          <span class="card-meta">Research &middot; 5 min read</span>
+          <h3>When an Agent Should Say “I Don’t Know”</h3>
+          <p>Honesty about uncertainty is a design choice. How we build agents that are open about the limits of what they know.</p>
+          <span class="more">Read more &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="blog.html">
+        <div class="video-slot" style="border-radius:0"><span class="play"></span><span class="tag">Video &middot; soon</span></div>
+        <div class="card-body">
+          <span class="card-meta">Video &middot; YouTube</span>
+          <h3>Inside the Lab: A Day with Our Agent</h3>
+          <p>A short film from our YouTube channel. Space reserved for the first video.</p>
+          <span class="more">Coming soon</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 </main>
+<section class="invite" aria-label="Get in touch">
+  <h2>Building AI that works with people, not around them?</h2>
+  <a href="contact.html">Let&rsquo;s Talk</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="aleph-light.png" alt="" aria-hidden="true">
+      <p>A Living Lab for <span style="white-space: nowrap">Human–AI</span> Collaboration</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="lab.html">Lab</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Let&rsquo;s Talk</a></li>
+        <li><a href="contact.html">Email</a><span class="soon">soon</span></li>
+        <li><a href="blog.html">YouTube</a><span class="soon">soon</span></li>
+        <li><a href="contact.html">LinkedIn</a><span class="soon">soon</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>&copy; 2026 EMET</span>
+    <span>emet.audax.earth</span>
+  </div>
+</footer>
 <script src="site.js?v=greybar"></script>
 </body>
 </html>
