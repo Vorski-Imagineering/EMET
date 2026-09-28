@@ -6,6 +6,6 @@
   btn.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.textContent = open ? 'Close' : 'Menu';
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });
 })();
