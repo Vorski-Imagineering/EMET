@@ -45,9 +45,12 @@
     padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 5vw, 3rem) calc(72px + clamp(4rem, 10vw, 7rem));
   }
   .mv-inner {
-    max-width: 1080px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 5rem);
+    max-width: 1140px; margin: 0 auto;
+    display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center;
   }
+  .mv-photo { margin: 0; border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 5; background: #d3d8ca; }
+  .mv-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 35% 45%; }
+  .mv-text { display: grid; gap: clamp(2.5rem, 5vw, 3.5rem); }
   .mv-item { border-top: 2px solid #c1673f; padding-top: 1.5rem; }
   .mv-label {
     font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.75rem;
@@ -61,7 +64,10 @@
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     font-size: clamp(1.02rem, 1.6vw, 1.15rem); line-height: 1.7; color: #4c5e4f; margin: 0;
   }
-  @media (max-width: 760px) { .mv-inner { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) {
+    .mv-inner { grid-template-columns: 1fr; }
+    .mv-photo { aspect-ratio: 4 / 3; }
+  }
 </style>
 </head>
 <body>
@@ -93,6 +99,11 @@
 </section>
 <section class="mv" aria-label="Vision and mission">
   <div class="mv-inner">
+    <!-- Placeholder photo: cottonbro studio, Pexels (free to use under the Pexels licence). To be replaced. -->
+    <figure class="mv-photo">
+      <img src="photo-team.jpg" alt="Three people gathered around a laptop, working together" loading="lazy" width="1000" height="1500">
+    </figure>
+    <div class="mv-text">
     <article class="mv-item">
       <p class="mv-label">Our Vision</p>
       <h2>Living Ecosystems</h2>
@@ -103,6 +114,7 @@
       <h2>Context-Aware AI Partners</h2>
       <p class="body">We engineer the agentic future through context-aware AI partners, anchored in functional empathy, persistent memory, and constructive friction. Operating as a Living Lab at Audax OS, we battle-test every ecosystem architecture within our own organization first, proving that true intelligence elevates human leadership and ensures safety before it acts.</p>
     </article>
+    </div>
   </div>
 </section>
 <script>
