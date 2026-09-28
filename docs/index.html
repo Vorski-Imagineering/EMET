@@ -72,7 +72,7 @@
   /* Why EMET: the golem story, on the deep background */
   .story {
     background: var(--deep); color: var(--light);
-    padding: clamp(4.5rem, 11vw, 8rem) clamp(1.5rem, 5vw, 3rem) calc(72px + clamp(4.5rem, 11vw, 8rem));
+    padding: clamp(4.5rem, 11vw, 8rem) clamp(1.5rem, 5vw, 3rem);
   }
   .story-inner { max-width: 44rem; margin: 0 auto; }
   .story .mv-label { color: var(--clay); }
@@ -101,6 +101,60 @@
   }
   .principles span { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 0.98rem; line-height: 1.6; color: #c9d3c9; }
   @media (max-width: 760px) { .principles { grid-template-columns: 1fr; } }
+
+  /* From the Lab: three blog cards */
+  .lab { background: #eef0e9; color: #2c332c; padding: clamp(4.5rem, 11vw, 7.5rem) clamp(1.5rem, 5vw, 3rem); }
+  .lab-inner { max-width: 1140px; margin: 0 auto; }
+  .lab-head { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.75rem; }
+  .lab-head h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(2rem, 4.4vw, 2.8rem); line-height: 1.1; margin: 0; }
+  .lab-head .mv-label { margin-bottom: 0.9rem; }
+  .all-link {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.8rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #2c332c; text-decoration: none; border-bottom: 1px solid #c1673f; padding-bottom: 0.2rem;
+  }
+  .all-link:hover { color: #c1673f; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.25rem, 3vw, 2rem); }
+  .card {
+    display: flex; flex-direction: column; background: #fff; border-radius: 6px; overflow: hidden;
+    color: inherit; text-decoration: none; box-shadow: 0 1px 2px rgba(28,33,29,.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(28,33,29,.12); }
+  .card img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+  .card-body { padding: 1.4rem 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
+  .card-meta { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #c1673f; }
+  .card h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; font-size: 1.35rem; line-height: 1.25; margin: 0; }
+  .card p { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 0.97rem; line-height: 1.6; color: #4c5e4f; margin: 0; }
+  .card .more { margin-top: auto; padding-top: 0.5rem; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2c332c; }
+  @media (max-width: 900px) { .cards { grid-template-columns: 1fr; max-width: 34rem; margin: 0 auto; } }
+  @media (prefers-reduced-motion: reduce) { .card, .card:hover { transition: none; transform: none; } }
+
+  /* Closing invitation */
+  .invite { background: #c1673f; color: #fff; padding: clamp(4rem, 9vw, 6rem) clamp(1.5rem, 5vw, 3rem); text-align: center; }
+  .invite h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.8rem, 4.2vw, 2.7rem); line-height: 1.2; margin: 0 auto 2rem; max-width: 24ch; text-wrap: balance; }
+  .invite a {
+    display: inline-block; background: #1c211d; color: #eef0e9; text-decoration: none;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 1rem 2rem; border-radius: 999px; transition: background .2s ease;
+  }
+  .invite a:hover { background: #2c332c; }
+
+  /* Footer */
+  .site-footer { background: var(--deep); color: #c9d3c9; padding: clamp(3.5rem, 8vw, 5rem) clamp(1.5rem, 5vw, 3rem) calc(72px + 2.5rem); }
+  .footer-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2.5rem; }
+  .footer-brand img { width: 44px; height: 44px; display: block; margin-bottom: 1rem; }
+  .footer-brand p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; line-height: 1.5; color: var(--light); margin: 0; max-width: 22ch; }
+  .footer-col h4 { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); margin: 0 0 1rem; }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  .footer-col a { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 0.95rem; color: #c9d3c9; text-decoration: none; }
+  .footer-col a:hover { color: var(--light); }
+  .footer-col .soon { font-size: 0.8rem; color: #7d8a7f; margin-left: 0.35rem; }
+  .footer-base {
+    max-width: 1140px; margin: 3rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.08em; color: #7d8a7f;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+  }
+  @media (max-width: 760px) { .footer-inner { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
 </style>
 </head>
 <body>
@@ -167,6 +221,82 @@
     <p>We develop these practices as a living lab, applying them inside our own organisation before we bring them to others. Our aim is collaboration between people and AI that strengthens human judgement instead of replacing it, so that the technology we create serves humanity, and not the other way round.</p>
   </div>
 </section>
+<!-- PLACEHOLDER blog posts (invented for layout, 2026-09-28). Not real articles; replace before promotion.
+     Photos: Pexels (free licence): hands on clay, 30909747; notebooks, 18649982; writing beside laptop, 7793668. -->
+<section class="lab" aria-label="From the Lab">
+  <div class="lab-inner">
+    <div class="lab-head">
+      <div>
+        <p class="mv-label">From the Lab</p>
+        <h2>Notes from Our Research</h2>
+      </div>
+      <a class="all-link" href="blog.html">All posts &rarr;</a>
+    </div>
+    <div class="cards">
+      <a class="card" href="blog.html">
+        <img src="blog-golem.jpg" alt="Hands shaping wet clay on a potter's wheel" loading="lazy" width="900" height="600">
+        <div class="card-body">
+          <span class="card-meta">Essay &middot; 6 min read</span>
+          <h3>What the Golem Teaches Us About AI Agents</h3>
+          <p>An old legend about a helper that obeyed too well, and what it means for the agents we are building today.</p>
+          <span class="more">Read more &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="blog.html">
+        <img src="blog-lab-notes.jpg" alt="Two people comparing handwritten notes at a wooden desk" loading="lazy" width="900" height="600">
+        <div class="card-body">
+          <span class="card-meta">Lab Notes &middot; 4 min read</span>
+          <h3>Testing on Ourselves First</h3>
+          <p>Why every practice we recommend begins inside our own team, and what a living lab looks like day to day.</p>
+          <span class="more">Read more &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="blog.html">
+        <img src="blog-uncertainty.jpg" alt="A hand writing in a notebook beside an open laptop" loading="lazy" width="900" height="600">
+        <div class="card-body">
+          <span class="card-meta">Research &middot; 5 min read</span>
+          <h3>When an Agent Should Say &ldquo;I Don&rsquo;t Know&rdquo;</h3>
+          <p>Honesty about uncertainty is a design choice. How we build agents that are open about the limits of what they know.</p>
+          <span class="more">Read more &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<section class="invite" aria-label="Get in touch">
+  <h2>Building AI that works with people, not around them?</h2>
+  <a href="contact.html">Let&rsquo;s Talk</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="aleph-light.png" alt="" aria-hidden="true">
+      <p>A Living Lab for <span style="white-space: nowrap">Human–AI</span> Collaboration</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="lab.html">Lab</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Let&rsquo;s Talk</a></li>
+        <li><a href="contact.html">Email</a><span class="soon">soon</span></li>
+        <li><a href="blog.html">YouTube</a><span class="soon">soon</span></li>
+        <li><a href="contact.html">LinkedIn</a><span class="soon">soon</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>&copy; 2026 EMET</span>
+    <span>emet.audax.earth</span>
+  </div>
+</footer>
 <script>
 (() => {
   const c = document.getElementById('waves');
