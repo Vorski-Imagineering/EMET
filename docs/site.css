@@ -232,6 +232,48 @@ body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
 @media (max-width: 1080px) { .team-grid { grid-template-columns: repeat(2, 1fr); max-width: 46rem; } }
 @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; max-width: 26rem; } .member-photo { aspect-ratio: 1 / 1; } }
 
+/* Lab page */
+.section-h { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.12; margin: 0 0 2rem; color: #2c332c; }
+.section-h.light { color: var(--light); }
+.lab-split { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
+.lab-photo { margin: 0; border-radius: 6px; overflow: hidden; }
+.lab-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.75rem; }
+.steps li { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; border-top: 1px solid #d3d8ca; padding-top: 1.5rem; }
+.steps .num { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.85rem; color: #c1673f; padding-top: 0.3rem; }
+.steps h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; font-size: 1.4rem; margin: 0 0 0.5rem; }
+.steps p { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 1rem; line-height: 1.65; color: #4c5e4f; margin: 0; }
+.dark-band { background: var(--deep); padding: clamp(4.5rem, 10vw, 7rem) clamp(1.5rem, 5vw, 3rem); }
+.dark-band .mv-label { color: var(--clay); }
+.questions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.q { border: 1px solid var(--rule); border-radius: 6px; padding: 1.75rem; transition: border-color .25s ease; }
+.q:hover { border-color: #5d6b5f; }
+.q-status {
+  display: inline-block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--deep); background: var(--sage); padding: 0.25rem 0.6rem; border-radius: 999px; margin-bottom: 1rem;
+}
+.q h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: 1.45rem; line-height: 1.25; color: var(--light); margin: 0 0 0.6rem; }
+.q p { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 0.98rem; line-height: 1.6; color: #c9d3c9; margin: 0; }
+.lab-wide { line-height: 0; }
+.lab-wide img { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 672; object-fit: cover; }
+.principles-light { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(2rem, 5vw, 4rem); }
+.principles-light ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem 2rem; }
+.principles-light li { border-top: 2px solid #c1673f; padding-top: 1rem; }
+.principles-light strong { display: block; font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; font-size: 1.2rem; margin-bottom: 0.4rem; }
+.principles-light span { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 0.97rem; line-height: 1.6; color: #4c5e4f; }
+.open-notes {
+  margin-top: clamp(3rem, 7vw, 4.5rem); background: #fff; border-radius: 6px; padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.open-notes h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; font-size: 1.35rem; margin: 0 0 0.35rem; }
+.open-notes p { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 0.97rem; color: #4c5e4f; margin: 0; }
+@media (max-width: 860px) {
+  .lab-split, .principles-light { grid-template-columns: 1fr; }
+  .lab-photo img { aspect-ratio: 4 / 3; }
+  .questions { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) { .principles-light ul { grid-template-columns: 1fr; } .lab-wide img { aspect-ratio: 16 / 9; } }
+
 @media (prefers-reduced-motion: reduce) {
   .brand .cursor { animation: none; }
   .nav a::after, .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after { transition: none; }
