@@ -343,3 +343,10 @@ body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
 .share-btn { display: inline-flex; align-items: center; gap: .45rem; padding: .5rem .9rem; border: 1px solid #b9c4b6; border-radius: 999px; background: transparent; color: #2c332c; font: 500 .9rem 'Inter', system-ui, sans-serif; text-decoration: none; cursor: pointer; }
 .share-btn:hover, .share-btn:focus-visible { border-color: #c1673f; color: #c1673f; }
 .share-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* LinkedIn link under each team member's name */
+.member-linkedin { display: inline-flex; align-items: center; gap: 0.45rem; align-self: flex-start; margin-top: -0.2rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #4c5e4f; text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+.member-linkedin svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.member-linkedin:hover, .member-linkedin:focus-visible { color: #c1673f; border-bottom-color: #c1673f; }
