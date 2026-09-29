@@ -65,24 +65,34 @@
     font-size: clamp(1.02rem, 1.6vw, 1.15rem); line-height: 1.7; color: #4c5e4f; margin: 0;
   }
   .mv-quote {
-    margin: 0; border-radius: 6px; background: #1c211d; color: #eef0e9;
-    padding: clamp(2.25rem, 5vw, 3.5rem); display: flex; flex-direction: column; justify-content: center;
-    min-height: 100%; box-sizing: border-box;
+    margin: 0; color: #2c332c; padding: clamp(0.5rem, 2vw, 1.5rem) 0;
+    display: flex; flex-direction: column; justify-content: center;
   }
   .mv-quote .mark {
-    font-family: 'Source Serif 4', Georgia, serif; font-size: 5rem; line-height: 0.6;
-    color: #d98657; margin: 0 0 1.25rem; display: block;
+    font-family: 'Source Serif 4', Georgia, serif; font-size: 6rem; line-height: 0.6;
+    color: #c1673f; margin: 0 0 1.25rem; display: block;
   }
   .mv-quote blockquote {
     margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400;
-    font-size: clamp(1.6rem, 3.2vw, 2.3rem); line-height: 1.25;
+    font-size: clamp(1.9rem, 3.6vw, 2.7rem); line-height: 1.22; color: #1c211d;
   }
   .mv-quote figcaption {
-    margin-top: 2rem; padding-top: 1.25rem; border-top: 2px solid #d98657;
+    margin-top: 2rem; padding-top: 1.25rem; border-top: 2px solid #c1673f; max-width: 22rem;
     font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.78rem; letter-spacing: 0.12em;
-    text-transform: uppercase; color: #9db3a1; line-height: 1.7;
+    text-transform: uppercase; color: #4c5e4f; line-height: 1.7;
   }
-  .mv-quote figcaption strong { color: #eef0e9; font-weight: 500; display: block; }
+  .mv-quote figcaption strong { color: #2c332c; font-weight: 500; display: block; }
+  /* entry motion: words rise in one by one, then the name; only when JS has prepared it */
+  .mv-quote.anim .mark, .mv-quote.anim .w, .mv-quote.anim figcaption {
+    opacity: 0; transform: translateY(0.6em); display: inline-block;
+    transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+  .mv-quote.anim .mark { display: block; }
+  .mv-quote.anim figcaption { display: block; transform: translateY(0.8rem); }
+  .mv-quote.anim.in .mark, .mv-quote.anim.in .w, .mv-quote.anim.in figcaption { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .mv-quote.anim .mark, .mv-quote.anim .w, .mv-quote.anim figcaption { opacity: 1; transform: none; transition: none; }
+  }
   @media (max-width: 760px) {
     .mv-inner { grid-template-columns: 1fr; }
     .mv-photo { aspect-ratio: 4 / 3; }
@@ -312,5 +322,21 @@
 })();
 </script>
 <script src="site.js?v=greybar"></script>
+<script>
+(function () {
+  var q = document.querySelector('.mv-quote');
+  if (!q || !('IntersectionObserver' in window)) return;
+  var bq = q.querySelector('blockquote');
+  var words = bq.textContent.trim().split(/\s+/);
+  bq.innerHTML = words.map(function (w, i) {
+    return '<span class="w" style="transition-delay:' + (0.25 + i * 0.09).toFixed(2) + 's">' + w + '</span>';
+  }).join(' ');
+  q.querySelector('figcaption').style.transitionDelay = (0.45 + words.length * 0.09).toFixed(2) + 's';
+  q.classList.add('anim');
+  new IntersectionObserver(function (es, o) {
+    es.forEach(function (e) { if (e.isIntersecting) { q.classList.add('in'); o.disconnect(); } });
+  }, { threshold: 0.35 }).observe(q);
+})();
+</script>
 </body>
 </html>
