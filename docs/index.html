@@ -93,6 +93,14 @@
   @media (prefers-reduced-motion: reduce) {
     .mv-quote.anim .mark, .mv-quote.anim .w, .mv-quote.anim figcaption { opacity: 1; transform: none; transition: none; }
   }
+  /* Desktop: quote across the top, vision and mission side by side below it */
+  @media (min-width: 761px) {
+    .mv-inner { grid-template-columns: 1fr; gap: clamp(3rem, 6vw, 4.5rem); }
+    .mv-quote { max-width: 52rem; margin: 0 auto; text-align: center; align-items: center; padding: 0; }
+    .mv-quote blockquote { font-size: clamp(2.2rem, 3.8vw, 3.1rem); }
+    .mv-quote figcaption { margin-left: auto; margin-right: auto; }
+    .mv-text { grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: start; }
+  }
   @media (max-width: 760px) {
     .mv-inner { grid-template-columns: 1fr; }
     .mv-photo { aspect-ratio: 4 / 3; }
