@@ -93,6 +93,51 @@
   @media (prefers-reduced-motion: reduce) {
     .mv-quote.anim .mark, .mv-quote.anim .w, .mv-quote.anim figcaption { opacity: 1; transform: none; transition: none; }
   }
+  /* Vision to mission as a path: 01 where we are going -> 02 how we get there */
+  .mv-path .mv-item { border-top: 0; padding-top: 0; }
+  .mv-path .mv-label { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.4rem; }
+  .mv-path .step {
+    display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+    border: 1.5px solid #c1673f; color: #c1673f; font-size: .8rem; letter-spacing: .05em;
+  }
+  .mv-path .mv-item + .mv-link + .mv-item .step { background: #c1673f; color: #eef0e9; }
+  .mv-link { position: relative; }
+  .mv-link .line { position: absolute; background: #c1673f; }
+  .mv-link .head { position: absolute; width: 11px; height: 11px; border-top: 1.5px solid #c1673f; border-right: 1.5px solid #c1673f; }
+  @media (min-width: 761px) {
+    .mv-text.mv-path { grid-template-columns: 1fr clamp(4rem, 8vw, 7rem) 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); }
+    .mv-link { align-self: start; height: 2.6rem; }
+    .mv-link .line { left: 0; right: 6px; top: 50%; height: 1.5px; }
+    .mv-link .head { right: 1px; top: calc(50% - 5.5px); transform: rotate(45deg); }
+  }
+  @media (max-width: 760px) {
+    .mv-text.mv-path { gap: 0; }
+    .mv-link { height: 4.5rem; margin-left: 1.3rem; }
+    .mv-link .line { top: .6rem; bottom: .9rem; left: 0; width: 1.5px; }
+    .mv-link .head { bottom: .75rem; left: -4.8px; transform: rotate(135deg); }
+  }
+  /* Colour: step 01 on soft sage, step 02 on deep green, a clay arrow between them */
+  .mv-path { align-items: stretch !important; }
+  .mv-path .mv-item { border-radius: 8px; padding: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .mv-path .mv-item:first-child { background: #dfe5da; }
+  .mv-path .mv-item:first-child .mv-label { color: #4c5e4f; }
+  .mv-path .mv-item:first-child .step { border-color: #4c5e4f; color: #4c5e4f; }
+  .mv-path .mv-item:first-child h2 { color: #1c211d; }
+  .mv-path .mv-item:first-child .body { color: #3d4a3f; }
+  .mv-path .mv-item:last-child { background: #1c211d; }
+  .mv-path .mv-item:last-child .mv-label { color: #d98657; }
+  .mv-path .mv-item:last-child .step { background: #d98657; border-color: #d98657; color: #1c211d; }
+  .mv-path .mv-item:last-child h2 { color: #eef0e9; }
+  .mv-path .mv-item:last-child .body { color: #c9d3c9; }
+  .mv-link .line { background: #c1673f; height: 2px !important; }
+  .mv-link .head { border-width: 2px !important; }
+  @media (min-width: 761px) {
+    .mv-text.mv-path { grid-template-columns: 1fr clamp(3rem, 5vw, 4.5rem) 1fr !important; gap: clamp(.75rem, 1.5vw, 1.25rem) !important; }
+    .mv-link { align-self: center !important; height: 2.6rem; }
+  }
+  @media (max-width: 760px) {
+    .mv-link { margin-left: 50% !important; height: 3.5rem !important; }
+  }
   /* Desktop: quote across the top, vision and mission side by side below it */
   @media (min-width: 761px) {
     .mv-inner { grid-template-columns: 1fr; gap: clamp(3rem, 6vw, 4.5rem); }
@@ -174,14 +219,15 @@
       <blockquote>The resulting partnership will think as no human brain has ever thought.</blockquote>
       <figcaption><strong>J.C.R. Licklider</strong>Man-Computer Symbiosis, 1960</figcaption>
     </figure>
-    <div class="mv-text">
+    <div class="mv-text mv-path">
     <article class="mv-item">
-      <p class="mv-label">Our Vision</p>
+      <p class="mv-label"><span class="step">01</span>Where we are going</p>
       <h2>Living Ecosystems</h2>
       <p class="body">We envision a future where organizations operate as secure, living ecosystems, where human intelligence and autonomous agency exist in relational alignment, enabling enterprises to scale infinitely while safeguarding context, safety, and human purpose.</p>
     </article>
+    <div class="mv-link" aria-hidden="true"><span class="line"></span><span class="head"></span></div>
     <article class="mv-item">
-      <p class="mv-label">Our Mission</p>
+      <p class="mv-label"><span class="step">02</span>How we get there</p>
       <h2>Context-Aware AI Partners</h2>
       <p class="body">We engineer the agentic future through context-aware AI partners, anchored in functional empathy, persistent memory, and constructive friction. Operating as a Living Lab at Audax OS, we battle-test every ecosystem architecture within our own organization first, proving that true intelligence elevates human leadership and ensures safety before it acts.</p>
     </article>
