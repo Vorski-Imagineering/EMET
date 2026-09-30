@@ -392,3 +392,7 @@ a.social-link:hover, a.social-link:focus-visible { color: #d98657; border-color:
 .filters button:hover:not(.on) { border-color: #2c332c; color: #2c332c; }
 .filters button:focus-visible { outline: 2px solid #d98657; outline-offset: 2px; }
 [data-cat][hidden] { display: none !important; }
+
+/* Single share button */
+.share-one { padding: .6rem 1.2rem; font-size: .95rem; }
+.share-one svg { width: 17px; height: 17px; }
