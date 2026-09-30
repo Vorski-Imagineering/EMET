@@ -396,3 +396,7 @@ a.social-link:hover, a.social-link:focus-visible { color: #d98657; border-color:
 /* Single share button */
 .share-one { padding: .6rem 1.2rem; font-size: .95rem; }
 .share-one svg { width: 17px; height: 17px; }
+
+/* Lab page: looping video in place of the first photo */
+.lab-video video { display: block; width: 100%; height: auto; aspect-ratio: 1000 / 752; object-fit: cover; background: #e9e4dc; }
+.lab-split:has(.lab-video) { align-items: center; }
