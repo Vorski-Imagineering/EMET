@@ -371,3 +371,7 @@ a.social-link:hover, a.social-link:focus-visible { color: #d98657; border-color:
 .post-hero-img .photo-mark::after { background-size: clamp(100px, 14%, 180px) auto, auto; }
 .card.featured .photo-mark { height: 100%; }
 .card.featured .photo-mark img { height: 100%; }
+
+/* Note on essays first published elsewhere */
+.prose .post-origin { font-size: .95rem; color: #6b776d; margin-top: 2rem; }
+.prose .post-origin a { color: inherit; }
