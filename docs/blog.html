@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=dora1">
+<link rel="stylesheet" href="site.css?v=filt1">
 </head>
 <body>
 <header class="site-header">
@@ -39,8 +39,8 @@
 </section>
 <section class="light-band">
   <div class="lab-inner">
-    <div class="filters" aria-hidden="true"><span class="on">All</span><span>Essays</span><span>Lab Notes</span><span>Research</span><span>Videos</span></div>
-    <a class="card featured" href="post-golem.html">
+    <div class="filters" role="group" aria-label="Filter posts"><button type="button" class="on" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="essay" aria-pressed="false">Essays</button><button type="button" data-filter="lab" aria-pressed="false">Lab Notes</button><button type="button" data-filter="video" aria-pressed="false">Videos</button></div>
+    <a class="card featured" href="post-golem.html" data-cat="essay">
         <span class="photo-mark"><img src="blog-dora-golem.jpg" alt="A rusted, block-built golem overgrown with roots, gently holding a monarch butterfly on its fingertip in a desert" loading="lazy" width="1280" height="714"></span>
         <div class="card-body">
           <span class="card-meta">Essay &middot; Dora Bender &middot; 30 Sep 2026</span>
@@ -50,7 +50,7 @@
         </div>
       </a>
     <div class="cards">
-      <a class="card" href="post-builder-to-gardener.html">
+      <a class="card" href="post-builder-to-gardener.html" data-cat="essay">
         <span class="photo-mark"><img src="blog-guy-growth.jpg" alt="Dark sculptural forms overgrown with glowing mushrooms, crystals and root-like threads" loading="lazy" width="1200" height="800"></span>
         <div class="card-body">
           <span class="card-meta">Essay &middot; Guy Blat &middot; 29 Sep 2026</span>
@@ -59,7 +59,7 @@
           <span class="more">Read more &rarr;</span>
         </div>
       </a>
-      <a class="card" href="post-agent-staffing-agency.html">
+      <a class="card" href="post-agent-staffing-agency.html" data-cat="essay">
         <span class="photo-mark"><img src="blog-victor-asa.jpg" alt="Cubist-style illustration of people and humanoid robots working together around a table of plans" loading="lazy" width="1279" height="720"></span>
         <div class="card-body">
           <span class="card-meta">Essay &middot; Victor Vorski &middot; 15 Sep 2026</span>
@@ -68,7 +68,7 @@
           <span class="more">Read more &rarr;</span>
         </div>
       </a>
-      <a class="card" href="post-inside-the-lab.html">
+      <a class="card" href="post-inside-the-lab.html" data-cat="lab">
         <span class="photo-mark"><img src="blog-lab-notes.jpg" alt="Two people comparing handwritten notes at a wooden desk" loading="lazy" width="900" height="600"></span>
         <div class="card-body">
           <span class="card-meta">Lab Notes &middot; EMET &middot; 30 Sep 2026</span>
@@ -77,7 +77,7 @@
           <span class="more">Read more &rarr;</span>
         </div>
       </a>
-      <a class="card" href="blog.html">
+      <a class="card" href="blog.html" data-cat="video">
         <div class="video-slot" style="border-radius:0"><span class="play"></span><span class="tag">Video &middot; soon</span></div>
         <div class="card-body">
           <span class="card-meta">Video &middot; YouTube</span>
@@ -135,5 +135,17 @@
   </div>
 </footer>
 <script src="site.js?v=greybar"></script>
+<script>
+(function () {
+  var btns = document.querySelectorAll('.filters button'), cards = document.querySelectorAll('[data-cat]');
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.dataset.filter;
+      btns.forEach(function (x) { var on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
+      cards.forEach(function (c) { c.hidden = !(f === 'all' || c.dataset.cat === f); });
+    });
+  });
+})();
+</script>
 </body>
 </html>
