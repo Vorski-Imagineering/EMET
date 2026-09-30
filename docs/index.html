@@ -39,6 +39,37 @@
 
   @media (prefers-reduced-motion: reduce) { .logo-wrap .cursor { animation: none; } }
 
+  /* Scroll cue B: a vertical "Scroll" label and a track with a clay dot travelling down it, on each side of the banner */
+  .scroll-cue {
+    position: absolute; z-index: 3; bottom: calc(72px + 1.75rem);
+    display: flex; flex-direction: column; align-items: center; gap: .9rem;
+    background: none; border: 0; padding: .5rem; cursor: pointer; color: #9db3a1;
+    transition: opacity .5s ease;
+  }
+  .scroll-cue.left { left: clamp(1.25rem, 4vw, 3rem); }
+  .scroll-cue.right { right: clamp(1.25rem, 4vw, 3rem); }
+  .scroll-cue .word {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .72rem;
+    letter-spacing: .32em; text-transform: uppercase; color: #9db3a1;
+  }
+  .scroll-cue .track { position: relative; width: 1.5px; height: 6rem; background: rgba(157,179,161,.28); overflow: visible; }
+  .scroll-cue .track .bead {
+    position: absolute; left: 50%; top: 0; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%;
+    background: #d98657; box-shadow: 0 0 10px rgba(217,134,87,.7);
+    animation: cue-bead 2.2s cubic-bezier(.6,0,.4,1) infinite;
+  }
+  .scroll-cue .track::after {
+    content: ""; position: absolute; left: 50%; bottom: -1px; width: 10px; height: 10px;
+    border-right: 1.5px solid #d98657; border-bottom: 1.5px solid #d98657;
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+  @keyframes cue-bead { 0% { top: 0; opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { top: calc(100% - 7px); opacity: 0; } }
+  .scroll-cue:hover .word, .scroll-cue:focus-visible .word { color: #d98657; }
+  .scrolled .scroll-cue { opacity: 0; pointer-events: none; }
+  @media (max-width: 600px) { .scroll-cue { bottom: calc(72px + 1rem); } .scroll-cue .track { height: 4rem; } .scroll-cue .word { font-size: .62rem; } }
+  @media (prefers-reduced-motion: reduce) { .scroll-cue .track .bead { animation: none; top: calc(100% - 16px); } }
+
   /* Mission and vision: light sage section under the banner */
   .mv {
     background: #eef0e9; color: #2c332c;
@@ -211,6 +242,7 @@
       <img class="cursor" src="logo-cursor.png" alt="" aria-hidden="true">
     </h1>
   </div>
+  <button class="scroll-cue left" type="button" aria-label="Explore: scroll down for more"><span class="word">Explore</span><span class="track"><span class="bead"></span></span></button>
 </section>
 <section class="mv" aria-label="Vision and mission">
   <div class="mv-inner">
@@ -390,6 +422,14 @@
   new IntersectionObserver(function (es, o) {
     es.forEach(function (e) { if (e.isIntersecting) { q.classList.add('in'); o.disconnect(); } });
   }, { threshold: 0.35 }).observe(q);
+})();
+</script>
+<script>
+(function(){
+  var next=document.querySelector('.mv');
+  document.querySelectorAll('.scroll-cue').forEach(function(b){ b.addEventListener('click',function(){ next.scrollIntoView({behavior:'smooth'}); }); });
+  function upd(){ document.body.classList.toggle('scrolled', window.scrollY > 80); }
+  window.addEventListener('scroll', upd, {passive:true}); upd();
 })();
 </script>
 </body>
