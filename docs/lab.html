@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=labv1">
+<link rel="stylesheet" href="site.css?v=labv0">
 </head>
 <body>
 <header class="site-header">
@@ -40,7 +40,7 @@
 <!-- PLACEHOLDER lab content (drafted for layout, 2026-09-28). Text and photos to be replaced. Photos: Pexels. -->
 <section class="light-band">
   <div class="lab-split">
-    <figure class="lab-photo lab-video"><video src="lab-video.mp4" poster="lab-video-poster.jpg" width="1000" height="752" autoplay muted loop playsinline preload="metadata" aria-label="Animation: an AI chip and a brain on a sunlit surface, the brain sending out glowing threads"></video></figure>
+    <figure class="lab-photo"><img src="lab-approach.jpg" alt="Four colleagues looking at one laptop together" loading="lazy" width="800" height="1000"></figure>
     <div>
       <p class="mv-label">Our Approach</p>
       <h2 class="section-h">How the Lab Works</h2>
@@ -127,8 +127,5 @@
   </div>
 </footer>
 <script src="site.js?v=greybar"></script>
-<script>
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('.lab-video video').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
-</script>
 </body>
 </html>
