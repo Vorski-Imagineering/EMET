@@ -396,3 +396,9 @@ a.social-link:hover, a.social-link:focus-visible { color: #d98657; border-color:
 /* Single share button */
 .share-one { padding: .6rem 1.2rem; font-size: .95rem; }
 .share-one svg { width: 17px; height: 17px; }
+
+/* "Follow on LinkedIn" line under each article's share button */
+.follow-lab { margin: 0 0 1.25rem; }
+.follow-lab-link { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Inter', system-ui, sans-serif; font-size: .9rem; color: #4c5e4f; text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+.follow-lab-link:hover, .follow-lab-link:focus-visible { color: #c1673f; border-color: #c1673f; }
+.follow-lab-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
