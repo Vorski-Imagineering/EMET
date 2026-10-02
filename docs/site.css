@@ -402,3 +402,11 @@ a.social-link:hover, a.social-link:focus-visible { color: #d98657; border-color:
 .follow-lab-link { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Inter', system-ui, sans-serif; font-size: .9rem; color: #4c5e4f; text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
 .follow-lab-link:hover, .follow-lab-link:focus-visible { color: #c1673f; border-color: #c1673f; }
 .follow-lab-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* FAQ / Q&A page */
+.faq-section { max-width: 880px; margin: 0 auto; padding: 1rem 1.5rem 5rem; }
+.faq-list { display: flex; flex-direction: column; gap: 2.1rem; }
+.faq-item { border-bottom: 1px solid rgba(238,240,233,0.12); padding-bottom: 2.1rem; }
+.faq-item:last-child { border-bottom: none; }
+.faq-item h3 { font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 1.25rem; margin: 0 0 .6rem; color: var(--light); }
+.faq-item p { font-family: 'Inter', system-ui, sans-serif; font-size: 1rem; line-height: 1.65; color: #c9d3c9; margin: 0; }
