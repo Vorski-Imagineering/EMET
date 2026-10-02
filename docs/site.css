@@ -410,3 +410,6 @@ a.social-link:hover, a.social-link:focus-visible { color: #d98657; border-color:
 .faq-item:last-child { border-bottom: none; }
 .faq-item h3 { font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 1.25rem; margin: 0 0 .6rem; color: var(--light); }
 .faq-item p { font-family: 'Inter', system-ui, sans-serif; font-size: 1rem; line-height: 1.65; color: #c9d3c9; margin: 0; }
+
+/* Home hero: one-line "what we do" under the logo */
+.hero-sub { margin: 1.4rem auto 0; max-width: 30ch; font-family: 'Inter', system-ui, sans-serif; font-size: clamp(0.9rem, 2.2vw, 1rem); color: #c9d3c9; text-wrap: balance; }
