@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Many Conversations, One EMET · EMET</title>
+<meta name="description" content="What getting lost in our own collaboration taught Guy Blat about the system EMET is trying to build.">
+<meta name="author" content="Guy Blat">
+<link rel="canonical" href="https://emet.audax.earth/post-many-conversations-one-emet.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EMET">
+<meta property="og:title" content="Many Conversations, One EMET">
+<meta property="og:description" content="What getting lost in our own collaboration taught Guy Blat about the system EMET is trying to build.">
+<meta property="og:url" content="https://emet.audax.earth/post-many-conversations-one-emet.html">
+<meta property="og:image" content="https://emet.audax.earth/blog-guy-many-conversations.jpg">
+<meta property="article:author" content="Guy Blat">
+<meta property="article:published_time" content="2026-10-04">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Many Conversations, One EMET">
+<meta name="twitter:description" content="What getting lost in our own collaboration taught Guy Blat about the system EMET is trying to build.">
+<meta name="twitter:image" content="https://emet.audax.earth/blog-guy-many-conversations.jpg">
+<meta name="theme-color" content="#1c211d">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=meta1">
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html" aria-label="EMET home">
+      <img src="logo-inline-dark.png" alt="EMET">
+      <img class="cursor" src="logo-inline-cursor.png" alt="" aria-hidden="true">
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="lab.html">Lab</a>
+      <a href="team.html">Team</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+      <a href="faq.html">Q&amp;A</a>
+      <a class="cta" href="contact.html">Let&rsquo;s Talk</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="intro">
+  <div class="intro-inner">
+    <p class="mv-label">Essay</p>
+    <h1>Many Conversations, One EMET</h1>
+    <p class="post-meta">By Guy Blat &middot; 4 October 2026 &middot; 3 min read</p>
+  </div>
+</section>
+<div class="post-hero-img"><span class="photo-mark"><img src="blog-guy-many-conversations.jpg" alt="A hand holding a stylus points toward a glowing neural network projected above a tablet, surrounded by small icons for chat, ideas, workflow and search" width="1280" height="720"></span></div>
+<section class="light-band" style="margin-top:-12vw;padding-top:calc(12vw + 3.5rem)">
+  <article class="prose essay">
+    <p>Yesterday I got lost.</p>
+    <p>Not metaphorically. I literally found myself trying to understand where the conversation with Victor and Dora was happening.</p>
+    <p>We had Telegram groups, topics inside groups, direct conversations, technical discussions, brainstorming threads, and WhatsApp messages. Each space made sense when it was created. Yet together they had started to create something none of us intended: fragmentation.</p>
+    <p>The irony was hard to miss.</p>
+    <p>We are building EMET to help human teams collaborate with agents &mdash; and our own human-agent team was beginning to suffer from exactly the problem EMET is supposed to help solve.</p>
+    <p>That turned out to be useful. Because it shifted an architectural discussion into a lived experience.</p>
+    <h2>The problem is not memory</h2>
+    <p>For some time, we had been thinking about EMET&rsquo;s memory.</p>
+    <p>We started to distinguish between different layers: a protected Genome containing the core identity of EMET, Team Memory belonging to a particular team, and Experience that allows EMET to learn more broadly over time.</p>
+    <p>That distinction is important. But yesterday I realized that memory architecture alone is not enough.</p>
+    <p>A team doesn&rsquo;t simply need somewhere to store information. Information moves.</p>
+    <p>A conversation happens somewhere. Something in it becomes significant. A decision emerges. Knowledge needs to be classified. Some of it remains private. Some becomes part of the team&rsquo;s shared understanding. Some may eventually become reusable learning.</p>
+    <p>Later, someone needs to retrieve it &mdash; perhaps from an entirely different conversation.</p>
+    <p class="flow">Conversation <span>&rarr;</span> Interpretation <span>&rarr;</span> Classification <span>&rarr;</span> Promotion <span>&rarr;</span> Retrieval <span>&rarr;</span> Learning</p>
+    <p>The important question is no longer just: where does EMET remember something?</p>
+    <p>It becomes: how does knowledge move through a human-agent organization?</p>
+    <h2>We are the domain experts</h2>
+    <p>Victor made an analogy that immediately resonated with me: this is like being a data architect rather than building a database.</p>
+    <p>A database is technology. A data architecture starts somewhere else: What information exists? Who owns it? Where should it flow? What relationships matter? What should remain separated? What should become shared?</p>
+    <p>Only after answering those questions should we decide how to implement them.</p>
+    <p>The same is true here. We can experiment with Hermes, RAG, databases, agents, Telegram integrations and whatever comes next. Victor is taking responsibility for the first technical iteration partly so that we can develop a better mental model of what the technology can actually do.</p>
+    <p>But technology cannot tell us what collaboration should look like. That is our job.</p>
+    <p>As the humans experiencing this new form of work, we are the domain experts. We need to define how information, knowledge and learning should flow between people, between agents, between teams, and eventually between organizations.</p>
+    <p>That may be one of EMET&rsquo;s most important design problems.</p>
+    <h2>A team needs a home</h2>
+    <p>Then something much simpler happened. I realized I was missing a place where the three of us could simply talk.</p>
+    <p>Telegram topics are useful because they create structure. But structure has a cost. As different topics become active, the human conversation becomes distributed across them.</p>
+    <p>Even the #general topic doesn&rsquo;t fully solve this. It is still one topic among many, and can disappear down the interface as other topics become active.</p>
+    <p>So I suggested creating another Telegram group. Just the three of us and EMET. No topics. One continuous conversation.</p>
+    <p>Victor immediately agreed. We created it.</p>
+    <p>It seems like a tiny operational decision, but I think it contains an important design principle:</p>
+    <p>Humans need a home, not only a filing system.</p>
+    <div class="share">
+      <button class="share-btn share-one" type="button" data-url="https://emet.audax.earth/post-many-conversations-one-emet.html" data-title="Many Conversations, One EMET" aria-label="Share this article"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg><span>Share</span></button>
+    </div>
+    <p class="follow-lab"><a class="follow-lab-link" href="https://www.linkedin.com/company/emet-a-living-lab/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3.5"/><path d="M7.5 10.5v6M7.5 7.4v.1M11.2 16.5v-6M11.2 13.2c0-1.7 1-2.9 2.6-2.9s2.4 1 2.4 2.7v3.5"/></svg>Follow EMET on LinkedIn for new posts</a></p>
+        <a class="all-link back" href="blog.html">&larr; All posts</a>
+  </article>
+</section>
+</main>
+<section class="invite" aria-label="Get in touch">
+  <h2>Building AI that works with people, not around them?</h2>
+  <a href="contact.html">Let&rsquo;s Talk</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="aleph-light.png" alt="" aria-hidden="true">
+      <p>A Living Lab for <span style="white-space: nowrap">Human&ndash;AI</span> Collaboration</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="lab.html">Lab</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Let&rsquo;s Talk</a></li>
+        <li><a href="contact.html">Email</a><span class="soon">soon</span></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow the Lab</h4>
+      <ul class="social footer-social"><li><a class="social-link" href="https://www.linkedin.com/company/emet-a-living-lab/" target="_blank" rel="noopener" aria-label="EMET on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3.5"/><path d="M7.5 10.5v6M7.5 7.4v.1M11.2 16.5v-6M11.2 13.2c0-1.7 1-2.9 2.6-2.9s2.4 1 2.4 2.7v3.5"/></svg><span class="social-name">LinkedIn</span></a></li><li><span class="social-link" title="X: link coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 4.5l15 15M19.5 4.5l-15 15"/></svg><span class="social-name">X</span></span></li><li><span class="social-link" title="YouTube: link coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path class="fill" d="M10.2 9.3l4.8 2.7-4.8 2.7z"/></svg><span class="social-name">YouTube</span></span></li></ul>
+      <p class="social-note">X and YouTube coming soon</p>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>&copy; 2026 EMET</span>
+    <span>emet.audax.earth</span>
+  </div>
+</footer>
+<script src="site.js?v=greybar"></script>
+<script>
+document.querySelectorAll('.share-one').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var l = b.querySelector('span'), url = b.dataset.url, title = b.dataset.title;
+    var copied = function () { l.textContent = 'Link copied'; setTimeout(function () { l.textContent = 'Share'; }, 2200); };
+    var copy = function () {
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(copied, function () { prompt('Copy this link:', url); });
+      else prompt('Copy this link:', url);
+    };
+    if (navigator.share) navigator.share({ title: title, url: url }).catch(function (e) { if (e && e.name !== 'AbortError') copy(); });
+    else copy();
+  });
+});
+</script>
+</body>
+</html>
