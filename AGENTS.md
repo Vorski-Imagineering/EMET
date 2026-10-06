@@ -92,8 +92,9 @@ docs/          # ⚠ THE PUBLISHED WEBSITE — see below
 
 ### Pre-conditions — before starting any task
 
-1. Run `ls specs/ docs/` and grep the repo for the topic and adjacent terms.
-2. State in your first response one of:
+1. Run `git fetch` and compare with upstream (`git status -sb`). If the branch is behind, tell the user in your first response and offer to pull. Do not pull until they agree. (In Claude Code, `.claude/hooks/check-upstream.sh` does the fetch at session start; other agents must run it themselves.)
+2. Run `ls specs/ docs/` and grep the repo for the topic and adjacent terms.
+3. State in your first response one of:
    - `Prior work found: [list of files]` — and explain how you'll build on or supersede it.
    - `No prior work on this topic.`
 
