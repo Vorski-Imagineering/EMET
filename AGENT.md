@@ -68,13 +68,12 @@ Do not include it. Replace with abstraction, anonymization, or omission.
 ### Directory layout
 
 ```
-specs/         # Design specs — internal, not published
 docs/          # ⚠ THE PUBLISHED WEBSITE — see below
 ```
 
 ### `docs/` is the live website
 
-`docs/` is the GitHub Pages source. Anything committed there appears at **https://emet.audax.earth**. Nothing internal — specs, notes, drafts, scratch work — goes in `docs/`. Design specs go in `specs/`.
+`docs/` is the GitHub Pages source. Anything committed there appears at **https://emet.audax.earth**. Nothing internal — specs, notes, drafts, scratch work — goes in `docs/`; keep it out of the repo.
 
 ### Naming rules (mandatory)
 
@@ -83,7 +82,7 @@ docs/          # ⚠ THE PUBLISHED WEBSITE — see below
 
 ### Repo memory vs agent memory
 
-- **Repo (`specs/`, `docs/`)**: durable, public or internal-but-versioned material. Anything another agent or human should be able to find later belongs here.
+- **Repo (`docs/`)**: durable, public material. Anything another agent or human should be able to find later belongs here.
 - **Agent memory (`~/.claude/.../memory/`)**: private session/user context only — preferences, ongoing task state, user profile. **Never put method or published content here**; it belongs in the repo.
 
 ---
@@ -93,7 +92,7 @@ docs/          # ⚠ THE PUBLISHED WEBSITE — see below
 ### Pre-conditions — before starting any task
 
 1. Run `git fetch` and compare with upstream (`git status -sb`). If the branch is behind, tell the user in your first response and offer to pull. Do not pull until they agree. (In Claude Code, `.claude/hooks/check-upstream.sh` does the fetch at session start; other agents must run it themselves.)
-2. Run `ls specs/ docs/` and grep the repo for the topic and adjacent terms.
+2. Run `ls docs/` and grep the repo for the topic and adjacent terms.
 3. State in your first response one of:
    - `Prior work found: [list of files]` — and explain how you'll build on or supersede it.
    - `No prior work on this topic.`
@@ -112,7 +111,7 @@ Skipping this step is a protocol violation.
 ### Citation format (mandatory)
 
 - **External sources**: `[source: <url-or-title>, accessed YYYY-MM-DD]`
-- **Internal repo work**: `[see: specs/foo.md#section]`
+- **Internal repo work**: `[see: docs/foo.html#section]`
 
 Do not fabricate sources, data, or citations. If a source cannot be verified, do not cite it — see §6.
 
@@ -133,7 +132,7 @@ Stop work and ask the user before:
 
 - **Publishing any client-derived material**, in any form, however abstracted.
 - **Writing anything to `docs/`** — that directory is the live public website.
-- **Deleting or rewriting** any existing file in `specs/` or `docs/`.
+- **Deleting or rewriting** any existing file in `docs/`.
 - **Publishing any name, organization, or quote** that is not already present in the public repo.
 - **Citing a source** you cannot verify is real and accessible (no fabricated URLs, no half-remembered titles).
 - **Including any item** that fails the §2 pre-write checklist.

@@ -28,7 +28,6 @@ judgement.
 | Path | Contents |
 |---|---|
 | `docs/` | **The live website** at [emet.audax.earth](https://emet.audax.earth) |
-| `specs/` | Design specs. Internal; not published |
 
 Anything committed to `docs/` appears on the public web. Nothing internal goes
 there.
