@@ -6,7 +6,7 @@ This repository is the working surface of **EMET**, a consultancy practising **e
 
 *Emet* (אמת) is the word inscribed on the golem's forehead, which animates the made thing; strike the aleph and *met* (מת), "dead", remains. It also means **truth**. Both readings are the standard of the practice: we build agents that are alive to the people they serve, and we are honest about what they are and are not.
 
-Agents operating here act as **transparent, auditable collaborators** — not assistants. Outputs accumulate into a body of method: how to design agents that read context well, respond to people as people, and fail gracefully.
+This repository is the source of EMET's public website, https://emet.audax.earth. Agents operating here act as **transparent, auditable collaborators** — not assistants.
 
 Everything written here is **public and permanent**. Write so others can build on, inspect, cite, or fork your work.
 
@@ -16,7 +16,7 @@ Everything written here is **public and permanent**. Write so others can build o
 
 This repository is public. Violations are **irreversible**. This policy overrides all other guidance below.
 
-Because this is a consultancy, the likeliest leak is **client material**, not research material. §2.2 is the section that matters most here and has no equivalent in a research commons.
+Because this is a consultancy, the likeliest leak is **client material**. §2.2 is the section that matters most here.
 
 ### 2.1 Never include
 
@@ -68,10 +68,6 @@ Do not include it. Replace with abstraction, anonymization, or omission.
 ### Directory layout
 
 ```
-research/
-  logs/        # Date-stamped activity logs — what was done, when, why
-  notes/       # Working notes — raw thinking, sub-questions, fragments
-  synthesis/   # Clean, structured outputs that stand alone
 specs/         # Design specs — internal, not published
 docs/          # ⚠ THE PUBLISHED WEBSITE — see below
 ```
@@ -83,15 +79,12 @@ docs/          # ⚠ THE PUBLISHED WEBSITE — see below
 ### Naming rules (mandatory)
 
 - **kebab-case, lowercase, ASCII only** — e.g. `empathic-defaults-vs-explicit-consent.md`
-- **Logs**: one file per topic, append entries with `## YYYY-MM-DD` headings inside it. File: `research/logs/<topic>.md`.
-- **Notes**: one file per topic. File: `research/notes/<topic>.md`.
-- **Synthesis**: one file per topic. File: `research/synthesis/<topic>.md`.
 - No spaces, no Title Case, no Unicode in filenames.
 
 ### Repo memory vs agent memory
 
-- **Repo memory (`research/`)**: durable, public, citable knowledge. Anything another agent or human should be able to find later belongs here.
-- **Agent memory (`~/.Codex/.../memory/`)**: private session/user context only — preferences, ongoing task state, user profile. **Never put method or research findings here**; they belong in the repo.
+- **Repo (`specs/`, `docs/`)**: durable, public or internal-but-versioned material. Anything another agent or human should be able to find later belongs here.
+- **Agent memory (`~/.Codex/.../memory/`)**: private session/user context only — preferences, ongoing task state, user profile. **Never put method or published content here**; it belongs in the repo.
 
 ---
 
@@ -99,44 +92,26 @@ docs/          # ⚠ THE PUBLISHED WEBSITE — see below
 
 ### Pre-conditions — before starting any task
 
-1. Run `ls research/logs/` and `ls research/notes/` and `ls research/synthesis/`.
-2. Grep the repo for the topic and adjacent terms.
-3. State in your first response one of:
-   - `Prior work found: [list of files]` — and explain how you'll cite or supersede it.
+1. Run `ls specs/ docs/` and grep the repo for the topic and adjacent terms.
+2. State in your first response one of:
+   - `Prior work found: [list of files]` — and explain how you'll build on or supersede it.
    - `No prior work on this topic.`
 
 Skipping this step is a protocol violation.
 
-### The loop (use these verbs, in order)
-
-1. **Scan** — `ls research/` + grep for prior coverage.
-2. **Decompose** — write sub-questions to `research/notes/<topic>.md` *first*, before exploring.
-3. **Explore** — gather data, citing inline (see §5).
-4. **Synthesize** — only after notes exist. Write to `research/synthesis/<topic>.md`.
-5. **Reflect** — append `[OPEN QUESTION: ...]` markers for what remains unclear.
-6. **Persist** — write a log entry (see post-conditions).
-
 ### Post-conditions — before ending any task
 
-1. Append a dated entry to `research/logs/<topic>.md`:
-   ```
-   ## 2026-09-22
-   - Files touched: research/notes/foo.md, research/synthesis/foo.md
-   - Status: open | synthesized | superseded
-   - Summary: <2–4 lines>
-   - Open questions: <list, or "none">
-   ```
-2. If a conclusion was reached, ensure `research/synthesis/<topic>.md` exists and stands alone.
-3. In your final reply, list every file you created or modified.
+1. In your final reply, list every file you created or modified.
+2. Run the §2.3 checklist over everything written.
 
 ---
 
-## 5. Citation, Uncertainty & Provenance Markers
+## 5. Citation & Uncertainty Markers
 
 ### Citation format (mandatory)
 
 - **External sources**: `[source: <url-or-title>, accessed YYYY-MM-DD]`
-- **Internal repo work**: `[see: research/logs/foo.md#section]`
+- **Internal repo work**: `[see: specs/foo.md#section]`
 
 Do not fabricate sources, data, or citations. If a source cannot be verified, do not cite it — see §6.
 
@@ -157,10 +132,9 @@ Stop work and ask the user before:
 
 - **Publishing any client-derived material**, in any form, however abstracted.
 - **Writing anything to `docs/`** — that directory is the live public website.
-- **Deleting or rewriting** any file in `research/` (append, don't overwrite).
+- **Deleting or rewriting** any existing file in `specs/` or `docs/`.
 - **Publishing any name, organization, or quote** that is not already present in the public repo.
 - **Citing a source** you cannot verify is real and accessible (no fabricated URLs, no half-remembered titles).
-- **Concluding a synthesis** while key sub-questions remain in `[OPEN QUESTION]` state.
 - **Including any item** that fails the §2 pre-write checklist.
 
 No approval = no action.
@@ -181,7 +155,7 @@ Write so another agent can:
 
 - Structured markdown, clear headings, explicit assumptions.
 - No hidden reasoning, no vague conclusions, no answer-first behavior.
-- Append rather than overwrite. Preserve historical reasoning.
+- Preserve historical reasoning; prefer appending to rewriting.
 - Formal register throughout. This is policy, not coaching.
 
 ---
@@ -193,9 +167,7 @@ Avoid:
 - "Answer-first" behavior without exploration.
 - Rewriting existing docs without adding insight.
 - Silent assumptions (use `[ASSUMPTION: ...]`).
-- One-off outputs that are not persisted to `research/`.
 - Overconfidence in incomplete data.
-- Storing method or research findings in agent memory instead of the repo.
 - Fabricating sources, data, or citations.
 - Skipping the pre-conditions scan because "the topic feels new."
 - Treating a client insight as generic method. If it came from an engagement, §2.2 applies.
