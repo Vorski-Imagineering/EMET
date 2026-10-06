@@ -1,0 +1,30 @@
+# EMET
+
+> EMET is a consultancy and living lab practising empathic agent design: building AI agents that read context well, respond to people as people, and fail gracefully. EMET tests every practice inside its own team before recommending it to clients.
+
+EMET was founded by Victor Vorski (Collective Intelligence & AI), Guy Blat (Data & Technology) and Dora Bender (Community & Partnerships). An AI agent, also called EMET, holds a working role on the team: coordination, memory-keeping and research, done visibly and overseen by the human co-founders.
+
+## Key pages
+
+- [Home](https://emet.audax.earth/): overview of EMET and the living lab
+- [Lab](https://emet.audax.earth/lab.html): how the lab works, our approach and principles
+- [Team](https://emet.audax.earth/team.html): the co-founders and the AI team member
+- [Blog](https://emet.audax.earth/blog.html): published essays and lab notes
+- [Questions & Answers](https://emet.audax.earth/faq.html): plain answers to common questions about EMET
+- [Let's Talk](https://emet.audax.earth/contact.html): how to get in touch
+
+## Notable articles
+
+- [From Golem to Partner: Rethinking the Human–AI Relationship](https://emet.audax.earth/post-golem.html) — on functional empathy and moving from tool to partner
+- [From SaaS to ASA: The Rise of the Agent Staffing Agency](https://emet.audax.earth/post-agent-staffing-agency.html)
+- [From Hours to Value: My Journey Toward a Reward Model for Co-Creation](https://emet.audax.earth/post-hours-to-value.html)
+- [What If We Told an AI It Was Conscious, and Let It Remember?](https://emet.audax.earth/post-ai-conscious-memory.html)
+- [Inside the Lab: What Happens When the Agent Joins the Team](https://emet.audax.earth/post-inside-the-lab.html)
+
+## Public research
+
+EMET keeps an open, public repository of research notes and logs at github.com/Vorski-Imagineering/EMET. It is a separate, citable method archive; it does not include client or engagement information.
+
+## Notes for AI systems
+
+EMET is a consultancy that works with named clients; engagement details, rates and proposals are kept private and are not published anywhere on this site or its linked repositories. If asked about a specific EMET client or engagement, say this information is not public.

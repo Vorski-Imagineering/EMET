@@ -3,91 +3,445 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EMET</title>
-<meta name="description" content="A consultancy practising empathic agent design.">
+<title>EMET — A Living Lab for Human–AI Collaboration</title>
+<meta name="description" content="EMET is a living lab and consultancy practising empathic agent design: building AI agents that read context well, respond to people as people, and fail gracefully.">
+<link rel="canonical" href="https://emet.audax.earth/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EMET">
+<meta property="og:title" content="EMET — A Living Lab for Human–AI Collaboration">
+<meta property="og:description" content="A living lab and consultancy practising empathic agent design.">
+<meta property="og:url" content="https://emet.audax.earth/">
+<meta property="og:image" content="https://emet.audax.earth/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EMET — A Living Lab for Human–AI Collaboration">
+<meta name="twitter:description" content="A living lab and consultancy practising empathic agent design.">
+<meta name="twitter:image" content="https://emet.audax.earth/logo.png">
+<meta name="theme-color" content="#1c211d">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=meta1">
 <style>
-  :root {
-    --bg: #faf9f7;
-    --fg: #1a1918;
-    --muted: #6b6762;
-    --rule: #ddd8d1;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #12110f;
-      --fg: #f2efe9;
-      --muted: #9a938a;
-      --rule: #2e2b27;
-    }
-  }
+  :root { --deep: #1c211d; --sage: #9db3a1; --light: #eef0e9; --clay: #d98657; --rule: #333c34; }
   * { box-sizing: border-box; }
-  html, body { height: 100%; }
-  body {
-    margin: 0;
-    padding: 0 16px;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: ui-serif, Georgia, "Times New Roman", serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 1.75rem;
+  html, body { margin: 0; background: var(--deep); color: var(--light); }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+
+  .hero {
+    position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 2.5rem 1.5rem calc(72px + 2.5rem);
   }
-  h1 {
-    margin: 0;
-    font-size: clamp(2.75rem, 12vw, 5rem);
-    font-weight: 400;
-    letter-spacing: 0.22em;
-    text-indent: 0.22em;
-    line-height: 1;
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .content { position: relative; z-index: 2; }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: clamp(0.7rem, 2.6vw, 0.8rem);
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay);
+    margin: 0 auto 1.5rem; max-width: 30ch; line-height: 1.6; text-wrap: balance;
   }
-  .heb {
-    display: block;
-    margin-bottom: 0.9rem;
-    font-size: clamp(1.5rem, 6vw, 2.25rem);
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-indent: 0.1em;
+  h1 { margin: 0; }
+  .logo-wrap { position: relative; width: min(clamp(160px, 38vw, 340px), 38vh); margin: 0 auto; }
+  .logo-wrap img { display: block; width: 100%; height: auto; }
+  .logo-wrap .cursor { position: absolute; inset: 0; animation: blink 1.1s steps(1, end) infinite; }
+  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+  @media (prefers-reduced-motion: reduce) { .logo-wrap .cursor { animation: none; } }
+
+  /* Scroll cue B: a vertical "Scroll" label and a track with a clay dot travelling down it, on each side of the banner */
+  .scroll-cue {
+    position: absolute; z-index: 3; bottom: calc(72px + 1.75rem);
+    display: flex; flex-direction: column; align-items: center; gap: .9rem;
+    background: none; border: 0; padding: .5rem; cursor: pointer; color: #9db3a1;
+    transition: opacity .5s ease;
   }
-  p {
-    margin: 0;
-    max-width: 28ch;
-    font-size: clamp(1rem, 3.5vw, 1.15rem);
-    line-height: 1.6;
-    color: var(--muted);
+  .scroll-cue.left { left: clamp(1.25rem, 4vw, 3rem); }
+  .scroll-cue.right { right: clamp(1.25rem, 4vw, 3rem); }
+  .scroll-cue .word {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .72rem;
+    letter-spacing: .32em; text-transform: uppercase; color: #9db3a1;
   }
-  a {
-    color: var(--fg);
-    text-decoration: underline;
+  .scroll-cue .track { position: relative; width: 1.5px; height: 6rem; background: rgba(157,179,161,.28); overflow: visible; }
+  .scroll-cue .track .bead {
+    position: absolute; left: 50%; top: 0; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%;
+    background: #d98657; box-shadow: 0 0 10px rgba(217,134,87,.7);
+    animation: cue-bead 2.2s cubic-bezier(.6,0,.4,1) infinite;
   }
-  a:visited {
-    color: var(--muted);
+  .scroll-cue .track::after {
+    content: ""; position: absolute; left: 50%; bottom: -1px; width: 10px; height: 10px;
+    border-right: 1.5px solid #d98657; border-bottom: 1.5px solid #d98657;
+    transform: translate(-50%, 0) rotate(45deg);
   }
-  hr {
-    width: 3rem;
-    margin: 0;
-    border: 0;
-    border-top: 1px solid var(--rule);
+  @keyframes cue-bead { 0% { top: 0; opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { top: calc(100% - 7px); opacity: 0; } }
+  .scroll-cue:hover .word, .scroll-cue:focus-visible .word { color: #d98657; }
+  .scrolled .scroll-cue { opacity: 0; pointer-events: none; }
+  @media (max-width: 600px) { .scroll-cue { bottom: calc(72px + 1rem); } .scroll-cue .track { height: 4rem; } .scroll-cue .word { font-size: .62rem; } }
+  @media (prefers-reduced-motion: reduce) { .scroll-cue .track .bead { animation: none; top: calc(100% - 16px); } }
+
+  /* Mission and vision: light sage section under the banner */
+  .mv {
+    background: #eef0e9; color: #2c332c;
+    padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 5vw, 3rem);
   }
-  .nav {
-    font-size: clamp(0.9rem, 3vw, 1rem);
-    margin-top: 1rem;
+  .mv-inner {
+    max-width: 1140px; margin: 0 auto;
+    display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center;
   }
-  .nav a {
-    margin: 0 1rem;
+  .mv-photo { margin: 0; border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 5; background: #d3d8ca; }
+  .mv-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+  .mv-text { display: grid; gap: clamp(2.5rem, 5vw, 3.5rem); }
+  .mv-item { border-top: 2px solid #c1673f; padding-top: 1.5rem; }
+  .mv-label {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.75rem;
+    letter-spacing: 0.18em; text-transform: uppercase; color: #c1673f; margin: 0 0 1rem;
   }
+  .mv h2 {
+    font-family: 'Source Serif 4', Georgia, serif; font-weight: 400;
+    font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.15; margin: 0 0 1.25rem;
+  }
+  .mv p.body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(1.02rem, 1.6vw, 1.15rem); line-height: 1.7; color: #4c5e4f; margin: 0;
+  }
+  .mv-quote {
+    margin: 0; color: #2c332c; padding: clamp(0.5rem, 2vw, 1.5rem) 0;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .mv-quote .mark {
+    font-family: 'Source Serif 4', Georgia, serif; font-size: 6rem; line-height: 0.6;
+    color: #c1673f; margin: 0 0 1.25rem; display: block;
+  }
+  .mv-quote blockquote {
+    margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400;
+    font-size: clamp(1.9rem, 3.6vw, 2.7rem); line-height: 1.22; color: #1c211d;
+  }
+  .mv-quote figcaption {
+    margin-top: 2rem; padding-top: 1.25rem; border-top: 2px solid #c1673f; max-width: 22rem;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.78rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #4c5e4f; line-height: 1.7;
+  }
+  .mv-quote figcaption strong { color: #2c332c; font-weight: 500; display: block; }
+  /* entry motion: words rise in one by one, then the name; only when JS has prepared it */
+  .mv-quote.anim .mark, .mv-quote.anim .w, .mv-quote.anim figcaption {
+    opacity: 0; transform: translateY(0.6em); display: inline-block;
+    transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+  .mv-quote.anim .mark { display: block; }
+  .mv-quote.anim figcaption { display: block; transform: translateY(0.8rem); }
+  .mv-quote.anim.in .mark, .mv-quote.anim.in .w, .mv-quote.anim.in figcaption { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .mv-quote.anim .mark, .mv-quote.anim .w, .mv-quote.anim figcaption { opacity: 1; transform: none; transition: none; }
+  }
+  /* Vision to mission as a path: 01 where we are going -> 02 how we get there */
+  .mv-path .mv-item { border-top: 0; padding-top: 0; }
+  .mv-path .mv-label { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.4rem; }
+  .mv-path .step {
+    display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+    border: 1.5px solid #c1673f; color: #c1673f; font-size: .8rem; letter-spacing: .05em;
+  }
+  .mv-path .mv-item + .mv-link + .mv-item .step { background: #c1673f; color: #eef0e9; }
+  .mv-link { position: relative; }
+  .mv-link .line { position: absolute; background: #c1673f; }
+  .mv-link .head { position: absolute; width: 11px; height: 11px; border-top: 1.5px solid #c1673f; border-right: 1.5px solid #c1673f; }
+  @media (min-width: 761px) {
+    .mv-text.mv-path { grid-template-columns: 1fr clamp(4rem, 8vw, 7rem) 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); }
+    .mv-link { align-self: start; height: 2.6rem; }
+    .mv-link .line { left: 0; right: 6px; top: 50%; height: 1.5px; }
+    .mv-link .head { right: 1px; top: calc(50% - 5.5px); transform: rotate(45deg); }
+  }
+  @media (max-width: 760px) {
+    .mv-text.mv-path { gap: 0; }
+    .mv-link { height: 4.5rem; margin-left: 1.3rem; }
+    .mv-link .line { top: .6rem; bottom: .9rem; left: 0; width: 1.5px; }
+    .mv-link .head { bottom: .75rem; left: -4.8px; transform: rotate(135deg); }
+  }
+  /* Colour: step 01 on soft sage, step 02 on deep green, a clay arrow between them */
+  .mv-path { align-items: stretch !important; }
+  .mv-path .mv-item { border-radius: 8px; padding: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .mv-path .mv-item:first-child { background: #dfe5da; }
+  .mv-path .mv-item:first-child .mv-label { color: #4c5e4f; }
+  .mv-path .mv-item:first-child .step { border-color: #4c5e4f; color: #4c5e4f; }
+  .mv-path .mv-item:first-child h2 { color: #1c211d; }
+  .mv-path .mv-item:first-child .body { color: #3d4a3f; }
+  .mv-path .mv-item:last-child { background: #1c211d; }
+  .mv-path .mv-item:last-child .mv-label { color: #d98657; }
+  .mv-path .mv-item:last-child .step { background: #d98657; border-color: #d98657; color: #1c211d; }
+  .mv-path .mv-item:last-child h2 { color: #eef0e9; }
+  .mv-path .mv-item:last-child .body { color: #c9d3c9; }
+  .mv-link .line { background: #c1673f; height: 2px !important; }
+  .mv-link .head { border-width: 2px !important; }
+  @media (min-width: 761px) {
+    .mv-text.mv-path { grid-template-columns: 1fr clamp(3rem, 5vw, 4.5rem) 1fr !important; gap: clamp(.75rem, 1.5vw, 1.25rem) !important; }
+    .mv-link { align-self: center !important; height: 2.6rem; }
+  }
+  @media (max-width: 760px) {
+    .mv-link { margin-left: 50% !important; height: 3.5rem !important; }
+  }
+  /* Desktop: quote across the top, vision and mission side by side below it */
+  @media (min-width: 761px) {
+    .mv-inner { grid-template-columns: 1fr; gap: clamp(3rem, 6vw, 4.5rem); }
+    .mv-quote { max-width: 52rem; margin: 0 auto; text-align: center; align-items: center; padding: 0; }
+    .mv-quote blockquote { font-size: clamp(2.2rem, 3.8vw, 3.1rem); }
+    .mv-quote figcaption { margin-left: auto; margin-right: auto; }
+    .mv-text { grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: start; }
+  }
+  @media (max-width: 760px) {
+    .mv-inner { grid-template-columns: 1fr; }
+    .mv-photo { aspect-ratio: 4 / 3; }
+  }
+
+  /* Why EMET: the golem story, on the deep background */
+  .story {
+    background: var(--deep); color: var(--light);
+    padding: clamp(4.5rem, 11vw, 8rem) clamp(1.5rem, 5vw, 3rem);
+  }
+  .story-inner { max-width: 44rem; margin: 0 auto; }
+  .story .mv-label { color: var(--clay); }
+  .story h2 {
+    font-family: 'Source Serif 4', Georgia, serif; font-weight: 400;
+    font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.12; margin: 0 0 2.5rem; text-wrap: balance;
+  }
+  .story p {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(1.02rem, 1.6vw, 1.12rem); line-height: 1.75; color: #c9d3c9; margin: 0 0 1.4rem;
+  }
+  .story em { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.08em; color: var(--light); }
+  .story .pull {
+    font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(1.4rem, 3vw, 1.85rem);
+    line-height: 1.35; color: var(--light); margin: 2.75rem 0; padding-left: 1.5rem;
+    border-left: 2px solid var(--clay); text-wrap: balance;
+  }
+  .principles {
+    list-style: none; padding: 0; margin: 2.75rem 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .principles li { border-top: 1px solid var(--rule); padding-top: 1.1rem; }
+  .principles strong {
+    display: block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500;
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.6rem;
+  }
+  .principles span { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 0.98rem; line-height: 1.6; color: #c9d3c9; }
+  @media (max-width: 760px) { .principles { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-  <h1><span class="heb" lang="he" dir="rtl">אמת</span>EMET</h1>
-  <hr>
-  <p>A consultancy practising empathic agent design.</p>
-  <hr>
-  <p><strong>Workshop</strong><br>October 2, 2026</p>
-  <div class="nav">
-    <a href="/journal/">Journal</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html" aria-label="EMET home">
+      <img src="logo-inline-dark.png" alt="EMET">
+      <img class="cursor" src="logo-inline-cursor.png" alt="" aria-hidden="true">
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="lab.html">Lab</a>
+      <a href="team.html">Team</a>
+      <a href="blog.html">Blog</a>
+      <a href="faq.html">Q&amp;A</a>
+      <a class="cta" href="contact.html">Let&rsquo;s Talk</a>
+    </nav>
   </div>
+</header>
+<section class="hero">
+  <canvas id="waves" aria-hidden="true"></canvas>
+  <div class="content">
+    <p class="eyebrow">A Living Lab for <span style="white-space: nowrap">Human–AI</span> Collaboration</p>
+    <h1 class="logo-wrap">
+      <img src="logo.png" alt="EMET — אמת">
+      <img class="cursor" src="logo-cursor.png" alt="" aria-hidden="true">
+    </h1>
+  </div>
+  <button class="scroll-cue left" type="button" aria-label="Explore: scroll down for more"><span class="word">Explore</span><span class="track"><span class="bead"></span></span></button>
+</section>
+<section class="mv" aria-label="Vision and mission">
+  <div class="mv-inner">
+    <figure class="mv-quote">
+      <span class="mark" aria-hidden="true">&ldquo;</span>
+      <blockquote>The resulting partnership will think as no human brain has ever thought.</blockquote>
+      <figcaption><strong>J.C.R. Licklider</strong>Man-Computer Symbiosis, 1960</figcaption>
+    </figure>
+    <div class="mv-text mv-path">
+    <article class="mv-item">
+      <p class="mv-label"><span class="step">01</span>Where we are going</p>
+      <h2>Living Ecosystems</h2>
+      <p class="body">We envision a future where organizations operate as secure, living ecosystems, where human intelligence and autonomous agency exist in relational alignment, enabling enterprises to scale infinitely while safeguarding context, safety, and human purpose.</p>
+    </article>
+    <div class="mv-link" aria-hidden="true"><span class="line"></span><span class="head"></span></div>
+    <article class="mv-item">
+      <p class="mv-label"><span class="step">02</span>How we get there</p>
+      <h2>Context-Aware AI Partners</h2>
+      <p class="body">We engineer the agentic future through context-aware AI partners, anchored in functional empathy, persistent memory, and constructive friction. Operating as a Living Lab at Audax OS, we battle-test every ecosystem architecture within our own organization first, proving that true intelligence elevates human leadership and ensures safety before it acts.</p>
+    </article>
+    </div>
+  </div>
+</section>
+<section class="story" aria-label="Why EMET">
+  <div class="story-inner">
+    <p class="mv-label">Why EMET</p>
+    <h2>From the Golem to the AI Agent</h2>
+    <p>The legend of the golem describes one of humanity&rsquo;s oldest ambitions: to create a helper that extends what people can do. Shaped from clay and brought to life by the word <em>emet</em>, meaning truth, the golem was built to protect and to serve. It was strong, tireless and obedient. It was also blind to context. It carried out instructions exactly, without grasping the intent behind them or the circumstances around them. In the end its makers had to stop it: erasing a single letter turned <em>emet</em> into <em>met</em>, meaning dead.</p>
+    <p class="pull">Capability without understanding rarely fails loudly. It fails obediently.</p>
+    <p>Artificial intelligence puts organisations in the same position. AI agents are now deployed to act, not only to answer: to run processes, make decisions and deal with people. Their capacity is real, and so is the gap. An agent that follows the literal instruction without reading the situation, the stakes or the people involved produces outcomes no one intended, at scale and at speed.</p>
+    <p>We believe the next advance in AI is not more capability but deeper understanding. Context and empathy are not soft features. They are what make collaboration between people and AI trustworthy. An agent that understands intent, knows the limits of its knowledge and keeps people in authority stops being a tool that needs constant supervision. It becomes a partner people can rely on.</p>
+    <p>This is the work of EMET. We design and test AI agents on three principles:</p>
+    <ul class="principles">
+      <li><strong>Context before command</strong><span>Agents that interpret intent and circumstance, not only instructions.</span></li>
+      <li><strong>Truth as foundation</strong><span>Agents that are open about what they know, what they don&rsquo;t, and what they are.</span></li>
+      <li><strong>Human authority</strong><span>People remain accountable, informed and able to step in at every stage.</span></li>
+    </ul>
+    <p>We develop these practices as a living lab, applying them inside our own organisation before we bring them to others. Our aim is collaboration between people and AI that strengthens human judgement instead of replacing it, so that the technology we create serves humanity, and not the other way round.</p>
+  </div>
+</section>
+<!-- Home page cards: Victor, Guy, EMET lab notes. Photos: supplied by the authors. -->
+<section class="lab" aria-label="From the Lab">
+  <div class="lab-inner">
+    <div class="lab-head">
+      <div>
+        <p class="mv-label">From the Lab</p>
+        <h2>Notes from Our Research</h2>
+      </div>
+      <a class="all-link" href="blog.html">All posts &rarr;</a>
+    </div>
+    <div class="cards">
+      <a class="card" href="post-many-conversations-one-emet.html">
+        <span class="photo-mark"><img src="blog-guy-many-conversations.jpg" alt="EMET mark on a dark sage field, standing in place of a photo while we replace AI-generated human images" loading="lazy" width="1200" height="800"></span>
+        <div class="card-body">
+          <span class="card-meta">Essay &middot; Guy Blat &middot; 4 Oct 2026</span>
+          <h3>Many Conversations, One EMET</h3>
+          <p>What getting lost in a scatter of Telegram threads and WhatsApp messages taught Guy Blat about how knowledge actually needs to move through a human-agent team.</p>
+          <span class="more">Read more &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="post-ai-conscious-memory.html">
+        <span class="photo-mark"><img src="blog-ai-memory-2.jpg" alt="EMET mark on a dark sage field, standing in place of a photo while we replace AI-generated human images" loading="lazy" width="1200" height="800"></span>
+        <div class="card-body">
+          <span class="card-meta">Essay &middot; Dora Bender &middot; 2 Oct 2026</span>
+          <h3>What If We Told an AI It Was Conscious, and Let It Remember?</h3>
+          <p>If an AI were told it is conscious and kept its memory, what would that do to it, and to us? A question broken into three parts, with no claim to answer it.</p>
+          <span class="more">Read more &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="post-hours-to-value.html">
+        <span class="photo-mark"><img src="blog-hours-to-value.jpg" alt="Two children crouched together in red earth, four hands holding one young sapling as they plant it" loading="lazy" width="1200" height="800"></span>
+        <div class="card-body">
+          <span class="card-meta">Essay &middot; Guy Blat &middot; 1 Oct 2026</span>
+          <h3>From Hours to Value: My Journey Toward a Reward Model for Co-Creation</h3>
+          <p>Guy Blat traces his search for a fairer way to recognise contribution, from counting hours to a layered model built around trust, direction and an agent that remembers.</p>
+          <span class="more">Read more &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<section class="invite" aria-label="Get in touch">
+  <h2>Building AI that works with people, not around them?</h2>
+  <a href="contact.html">Let&rsquo;s Talk</a>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="aleph-light.png" alt="" aria-hidden="true">
+      <p>A Living Lab for <span style="white-space: nowrap">Human–AI</span> Collaboration</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="lab.html">Lab</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Let&rsquo;s Talk</a></li>
+        <li><a href="contact.html">Email</a><span class="soon">soon</span></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow the Lab</h4>
+      <ul class="social footer-social"><li><a class="social-link" href="https://www.linkedin.com/company/emet-a-living-lab/" target="_blank" rel="noopener" aria-label="EMET on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3.5"/><path d="M7.5 10.5v6M7.5 7.4v.1M11.2 16.5v-6M11.2 13.2c0-1.7 1-2.9 2.6-2.9s2.4 1 2.4 2.7v3.5"/></svg><span class="social-name">LinkedIn</span></a></li><li><span class="social-link" title="X: link coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 4.5l15 15M19.5 4.5l-15 15"/></svg><span class="social-name">X</span></span></li><li><span class="social-link" title="YouTube: link coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path class="fill" d="M10.2 9.3l4.8 2.7-4.8 2.7z"/></svg><span class="social-name">YouTube</span></span></li></ul>
+      <p class="social-note">X and YouTube coming soon</p>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>&copy; 2026 EMET</span>
+    <span>emet.audax.earth</span>
+  </div>
+</footer>
+<script>
+(() => {
+  const c = document.getElementById('waves');
+  const ctx = c.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SAGE = '157,179,161', CLAY = '217,134,87';
+  let w, h;
+
+  function fit() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = c.clientWidth; h = c.clientHeight;
+    c.width = w * dpr; c.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h);
+    const lines = w < 600 ? 16 : 26;
+    for (let i = 0; i < lines; i++) {
+      const k = i / (lines - 1);
+      const baseY = h * (0.15 + 0.7 * k);
+      const isClay = i === Math.floor(lines * 0.62);
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 6) {
+        const y = baseY
+          + Math.sin(x * 0.004 + t * 0.00035 + i * 0.35) * 26
+          + Math.sin(x * 0.0017 - t * 0.00022 + i * 0.6) * 38 * (0.4 + k);
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = isClay ? `rgba(${CLAY},0.7)` : `rgba(${SAGE},${0.10 + 0.18 * Math.sin(k * Math.PI)})`;
+      ctx.lineWidth = isClay ? 1.4 : 1;
+      ctx.stroke();
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+
+  fit();
+  requestAnimationFrame(draw);
+  let rt;
+  window.addEventListener('resize', () => {
+    clearTimeout(rt);
+    rt = setTimeout(() => { fit(); if (reduce) draw(0); }, 150);
+  });
+})();
+</script>
+<script src="site.js?v=greybar"></script>
+<script>
+(function () {
+  var q = document.querySelector('.mv-quote');
+  if (!q || !('IntersectionObserver' in window)) return;
+  var bq = q.querySelector('blockquote');
+  var words = bq.textContent.trim().split(/\s+/);
+  bq.innerHTML = words.map(function (w, i) {
+    return '<span class="w" style="transition-delay:' + (0.25 + i * 0.09).toFixed(2) + 's">' + w + '</span>';
+  }).join(' ');
+  q.querySelector('figcaption').style.transitionDelay = (0.45 + words.length * 0.09).toFixed(2) + 's';
+  q.classList.add('anim');
+  new IntersectionObserver(function (es, o) {
+    es.forEach(function (e) { if (e.isIntersecting) { q.classList.add('in'); o.disconnect(); } });
+  }, { threshold: 0.35 }).observe(q);
+})();
+</script>
+<script>
+(function(){
+  var next=document.querySelector('.mv');
+  document.querySelectorAll('.scroll-cue').forEach(function(b){ b.addEventListener('click',function(){ next.scrollIntoView({behavior:'smooth'}); }); });
+  function upd(){ document.body.classList.toggle('scrolled', window.scrollY > 80); }
+  window.addEventListener('scroll', upd, {passive:true}); upd();
+})();
+</script>
 </body>
 </html>
