@@ -250,7 +250,7 @@ body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
 .section-h.light { color: var(--light); }
 .lab-split { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
 .lab-photo { margin: 0; border-radius: 6px; overflow: hidden; }
-.lab-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.lab-photo img, .lab-photo video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #f5efe6; }
 .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.75rem; }
 .steps li { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; border-top: 1px solid #d3d8ca; padding-top: 1.5rem; }
 .steps .num { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.85rem; color: #c1673f; padding-top: 0.3rem; }
@@ -282,7 +282,7 @@ body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
 .open-notes p { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 0.97rem; color: #4c5e4f; margin: 0; }
 @media (max-width: 860px) {
   .lab-split, .principles-light { grid-template-columns: 1fr; }
-  .lab-photo img { aspect-ratio: 4 / 3; }
+  .lab-photo img, .lab-photo video { aspect-ratio: 4 / 3; }
   .questions { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) { .principles-light ul { grid-template-columns: 1fr; } .lab-wide img { aspect-ratio: 16 / 9; } }
