@@ -83,6 +83,7 @@
       <label>Message<textarea name="message" rows="5" required placeholder="Tell us a little about what you have in mind"></textarea></label>
       <button type="submit">Send Message</button>
       <p class="form-note" id="contact-note" role="status">Your email app should open with your message ready to send. If nothing opens, write to <a href="mailto:emet.living.lab@gmail.com">emet.living.lab@gmail.com</a> directly.</p>
+      <p class="signup-fine">Messages sent through this form are stored in a private spreadsheet that only the EMET team can open. We use them only to reply to you.</p>
     </form>
   </div>
 </section>
@@ -142,17 +143,26 @@
   function open(subject, body) {
     window.location.href = "mailto:" + TO + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
   }
+  // Sign-ups and Let's Talk messages are appended to the "EMET Mailing List" Google Sheet through a
+  // Google Apps Script web app. Paste the web app URL here once it is deployed; until then both forms fall back to email.
+  var SIGNUP_ENDPOINT = "";
   var cf = document.getElementById("contact-form");
   if (cf) cf.addEventListener("submit", function (e) {
     e.preventDefault();
-    var f = cf.elements;
-    open("EMET Let's Talk: " + f.topic.value,
-      f.message.value + "\n\n--\nName: " + f.name.value + "\nEmail: " + f.email.value + "\nOrganisation: " + f.org.value);
-    document.getElementById("contact-note").classList.add("show");
+    var f = cf.elements, note = document.getElementById("contact-note");
+    function viaEmail() {
+      open("EMET Let's Talk: " + f.topic.value,
+        f.message.value + "\n\n--\nName: " + f.name.value + "\nEmail: " + f.email.value + "\nOrganisation: " + f.org.value);
+      note.textContent = "Your email app should open with your message ready to send. If nothing opens, write to " + TO + " directly.";
+    }
+    note.classList.add("show");
+    if (!SIGNUP_ENDPOINT) { viaEmail(); return; }
+    note.textContent = "Sending...";
+    fetch(SIGNUP_ENDPOINT, { method: "POST", mode: "no-cors", body: new URLSearchParams({
+      kind: "contact", name: f.name.value, email: f.email.value, org: f.org.value, topic: f.topic.value, message: f.message.value }) })
+      .then(function () { note.textContent = "Thank you. We have your message and will be in touch."; cf.reset(); })
+      .catch(viaEmail);
   });
-  // Sign-ups are appended to the "EMET Mailing List" Google Sheet through a Google Apps Script web app.
-  // Paste the web app URL here once it is deployed; until then the form falls back to email.
-  var SIGNUP_ENDPOINT = "";
   var sf = document.getElementById("signup-form");
   if (sf) sf.addEventListener("submit", function (e) {
     e.preventDefault();
