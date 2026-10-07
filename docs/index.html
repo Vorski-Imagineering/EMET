@@ -196,7 +196,7 @@
   /* Why EMET: the golem story, on the deep background */
   .story {
     background: var(--deep); color: var(--light);
-    padding: clamp(4.5rem, 11vw, 8rem) clamp(1.5rem, 5vw, 3rem);
+    padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3rem) clamp(4.5rem, 11vw, 8rem);
   }
   .story-inner { max-width: 44rem; margin: 0 auto; }
   .story .mv-label { color: var(--clay); }
@@ -210,15 +210,16 @@
   }
   .story em { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.08em; color: var(--light); }
   /* Looping shapes video, widened past the text column, with the tagline set on the video's cream ground */
+  .shapes { background: var(--deep); padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 5vw, 3rem) 0; }
+  .shapes-inner { max-width: 1140px; margin: 0 auto; }
   .story-media {
-    position: relative; container-type: inline-size; margin: 0 0 2.5rem;
-    width: min(1140px, calc(100vw - 2 * clamp(1.5rem, 5vw, 3rem))); margin-left: 50%; transform: translateX(-50%);
+    position: relative; container-type: inline-size; width: 100%;
     aspect-ratio: 2048 / 684; background: #f7f1e8; border-radius: 6px; overflow: hidden;
   }
   .story-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-  .story .story-tag { position: absolute; left: 0; right: 0; bottom: 3.5%; text-align: center; padding: 0 1rem; }
-  .story .story-tag .tag-title { font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: clamp(1rem, 3cqw, 2.2rem); line-height: 1.15; color: #1f4a38; margin: 0 0 .3em; }
-  .story .story-tag .tag-sub { font-weight: 300; font-size: clamp(.7rem, 1.5cqw, 1rem); letter-spacing: .06em; color: #4c5e4f; margin: 0; line-height: 1.3; }
+  .shapes .story-tag { position: absolute; left: 0; right: 0; bottom: 3.5%; text-align: center; padding: 0 1rem; }
+  .shapes .story-tag .tag-title { font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: clamp(1rem, 3cqw, 2.2rem); line-height: 1.15; color: #1f4a38; margin: 0 0 .3em; }
+  .shapes .story-tag .tag-sub { font-weight: 300; font-size: clamp(.7rem, 1.5cqw, 1rem); letter-spacing: .06em; color: #4c5e4f; margin: 0; line-height: 1.3; }
   @media (max-width: 640px) { .story-media { aspect-ratio: 6 / 5; } }
   .story .pull {
     font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(1.4rem, 3vw, 1.85rem);
@@ -289,10 +290,8 @@
     </div>
   </div>
 </section>
-<section class="story" aria-label="Why EMET">
-  <div class="story-inner">
-    <p class="mv-label">Why EMET</p>
-    <h2>From the Golem to the AI Agent</h2>
+<section class="shapes" aria-label="From command to context">
+  <div class="shapes-inner">
     <div class="story-media">
       <video src="emet-original-shapes.mp4" poster="emet-original-shapes-poster.jpg" autoplay loop muted playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
       <div class="story-tag">
@@ -300,6 +299,12 @@
         <p class="tag-sub">Human Insight. Digital Agency.</p>
       </div>
     </div>
+  </div>
+</section>
+<section class="story" aria-label="Why EMET">
+  <div class="story-inner">
+    <p class="mv-label">Why EMET</p>
+    <h2>From the Golem to the AI Agent</h2>
     <p>The legend of the golem describes one of humanity&rsquo;s oldest ambitions: to create a helper that extends what people can do. Shaped from clay and brought to life by the word <em>emet</em>, meaning truth, the golem was built to protect and to serve. It was strong, tireless and obedient. It was also blind to context. It carried out instructions exactly, without grasping the intent behind them or the circumstances around them. In the end its makers had to stop it: erasing a single letter turned <em>emet</em> into <em>met</em>, meaning dead.</p>
     <p class="pull">Capability without understanding rarely fails loudly. It fails obediently.</p>
     <p>Artificial intelligence puts organisations in the same position. AI agents are now deployed to act, not only to answer: to run processes, make decisions and deal with people. Their capacity is real, and so is the gap. An agent that follows the literal instruction without reading the situation, the stakes or the people involved produces outcomes no one intended, at scale and at speed.</p>
