@@ -163,6 +163,10 @@ body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; color: #c9d3c9;
   font-size: clamp(1.05rem, 1.8vw, 1.2rem); line-height: 1.65; margin: 1.5rem 0 0; max-width: 40rem;
 }
+.intro-split { display: grid; grid-template-columns: 1fr minmax(240px, 340px); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.intro-video { margin: 0; border-radius: 6px; overflow: hidden; background: #f5efe6; }
+.intro-video video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+@media (max-width: 760px) { .intro-split { grid-template-columns: 1fr; } .intro-video { max-width: 320px; } }
 .light-band { background: #eef0e9; color: #2c332c; padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem); }
 
 /* Blog: featured post + grid */
