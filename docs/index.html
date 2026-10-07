@@ -209,6 +209,10 @@
     font-size: clamp(1.02rem, 1.6vw, 1.12rem); line-height: 1.75; color: #c9d3c9; margin: 0 0 1.4rem;
   }
   .story em { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.08em; color: var(--light); }
+  .story-video { display: block; width: 100%; height: auto; aspect-ratio: 2048 / 684; border-radius: 6px; margin: 0 0 2rem; background: var(--deep); }
+  .story-tag { margin: 0 0 2.5rem; }
+  .story .story-tag .tag-title { font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: clamp(1.6rem, 3.6vw, 2.25rem); line-height: 1.15; color: var(--light); margin: 0 0 .5rem; }
+  .story .story-tag .tag-sub { font-weight: 300; font-size: clamp(.85rem, 1.6vw, .95rem); letter-spacing: .04em; color: #c9d3c9; margin: 0; }
   .story .pull {
     font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(1.4rem, 3vw, 1.85rem);
     line-height: 1.35; color: var(--light); margin: 2.75rem 0; padding-left: 1.5rem;
@@ -282,6 +286,11 @@
   <div class="story-inner">
     <p class="mv-label">Why EMET</p>
     <h2>From the Golem to the AI Agent</h2>
+    <video class="story-video" src="emet-original-shapes.mp4" autoplay loop muted playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
+    <div class="story-tag">
+      <p class="tag-title">From command to context</p>
+      <p class="tag-sub">Human Insight. Digital Agency.</p>
+    </div>
     <p>The legend of the golem describes one of humanity&rsquo;s oldest ambitions: to create a helper that extends what people can do. Shaped from clay and brought to life by the word <em>emet</em>, meaning truth, the golem was built to protect and to serve. It was strong, tireless and obedient. It was also blind to context. It carried out instructions exactly, without grasping the intent behind them or the circumstances around them. In the end its makers had to stop it: erasing a single letter turned <em>emet</em> into <em>met</em>, meaning dead.</p>
     <p class="pull">Capability without understanding rarely fails loudly. It fails obediently.</p>
     <p>Artificial intelligence puts organisations in the same position. AI agents are now deployed to act, not only to answer: to run processes, make decisions and deal with people. Their capacity is real, and so is the gap. An agent that follows the literal instruction without reading the situation, the stakes or the people involved produces outcomes no one intended, at scale and at speed.</p>
