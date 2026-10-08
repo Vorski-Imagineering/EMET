@@ -15,7 +15,7 @@ EMET was founded by Victor Vorski (Collective Intelligence & AI), Guy Blat (Data
 
 ## Notable articles
 
-- [A Digital DNA: What an Agent Should Never Forget, and What It Should Let Go?](https://emet.audax.earth/post-digital-dna.html) — on separating an agent's genome, team memory and own experience
+- [A Digital DNA: What an Agent Should Never Forget, and What It Should Let Go](https://emet.audax.earth/post-digital-dna.html) — on separating an agent's genome, team memory and own experience
 - [From Golem to Partner: Rethinking the Human–AI Relationship](https://emet.audax.earth/post-golem.html) — on functional empathy and moving from tool to partner
 - [From SaaS to ASA: The Rise of the Agent Staffing Agency](https://emet.audax.earth/post-agent-staffing-agency.html)
 - [From Hours to Value: My Journey Toward a Reward Model for Co-Creation](https://emet.audax.earth/post-hours-to-value.html)
