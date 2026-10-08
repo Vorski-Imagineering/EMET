@@ -2,7 +2,7 @@
 
 > EMET is a consultancy and living lab practising empathic agent design: building AI agents that read context well, respond to people as people, and fail gracefully. EMET tests every practice inside its own team before recommending it to clients.
 
-EMET was founded by Victor Vorski (Collective Intelligence & AI), Guy Blat (Data & Technology) and Dora Bender (Community & Partnerships). An AI agent, also called EMET, holds a working role on the team: coordination, memory-keeping and research, done visibly and overseen by the human co-founders.
+EMET was founded by Victor Vorski (Collective Intelligence & AI), Guy Blat (Data & Technology) and Dora Bender (Human–AI Experience Architect). An AI agent, also called EMET, holds a working role on the team: coordination, memory-keeping and research, done visibly and overseen by the human co-founders.
 
 ## Key pages
 
