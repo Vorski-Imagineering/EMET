@@ -191,8 +191,8 @@ body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
 .filters span.on, .filters button.on { background: #2c332c; border-color: #2c332c; color: #eef0e9; }
 
 /* Post page */
-.post-hero-img { max-width: 1140px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
-.post-hero-img img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 8; object-fit: cover; border-radius: 6px; }
+.post-hero-img { max-width: 1040px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
+.post-hero-img img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; border-radius: 6px; }
 .post-meta { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); margin-top: 1.5rem; }
 .prose { max-width: 42rem; margin: 0 auto; }
 .prose p { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 1.1rem; line-height: 1.8; color: #34403a; margin: 0 0 1.4rem; }
