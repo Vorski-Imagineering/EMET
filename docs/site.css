@@ -357,6 +357,7 @@ body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
 
 /* Essay pages: tighter paragraph rhythm */
 .prose.essay p { line-height: 1.7; margin-bottom: 1.1rem; }
+.prose strong { font-weight: 600; color: #1f2621; }
 .prose.essay h2 { margin: 2.2rem 0 .8rem; }
 
 /* Live social links (LinkedIn is connected; X and YouTube still pending) */
